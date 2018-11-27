@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  formation: MyString
+  name: MyString
+  institution: MyString
+  age: 1
+  client: one
+
+two:
+  formation: MyString
+  name: MyString
+  institution: MyString
+  age: 1
+  client: two
