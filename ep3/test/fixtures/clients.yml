@@ -6,8 +6,8 @@ one:
   condition: 1
   exercise: one
   food: one
-  weight: 1.0
-  height: 1.0
+  weight: 1.5
+  height: 1.5
 
 two:
   name: MyString
@@ -15,5 +15,5 @@ two:
   condition: 1
   exercise: two
   food: two
-  weight: 1.0
-  height: 1.0
+  weight: 1.5
+  height: 1.5

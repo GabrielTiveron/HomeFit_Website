@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
-  belongs_to :exercise
-  belongs_to :food
+  has_one :trainer
+  has_many :exercise
+  has_many :food
 end

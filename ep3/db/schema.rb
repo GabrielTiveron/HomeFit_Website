@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_205638) do
+ActiveRecord::Schema.define(version: 2018_11_28_182322) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_11_27_205638) do
     t.integer "condition"
     t.integer "exercise_id"
     t.integer "food_id"
-    t.float "height"
     t.float "weight"
+    t.float "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_clients_on_exercise_id"

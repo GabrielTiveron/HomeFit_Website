@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Formation:</strong>
+  <%= @trainer.formation %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trainer.name %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @trainer.institution %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @trainer.age %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @trainer.client %>
+</p>
+
+<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+<%= link_to 'Back', trainers_path %>
