@@ -10,20 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_182322) do
+ActiveRecord::Schema.define(version: 2018_11_29_172428) do
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.integer "condition"
-    t.integer "exercise_id"
-    t.integer "food_id"
-    t.float "weight"
-    t.float "height"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_clients_on_exercise_id"
-    t.index ["food_id"], name: "index_clients_on_food_id"
+    t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -44,14 +42,15 @@ ActiveRecord::Schema.define(version: 2018_11_28_182322) do
   end
 
   create_table "trainers", force: :cascade do |t|
-    t.string "formation"
-    t.string "name"
-    t.string "institution"
-    t.integer "age"
-    t.integer "client_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_trainers_on_client_id"
+    t.index ["email"], name: "index_trainers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   end
 
 end
