@@ -13,12 +13,3 @@
  *= require_tree .
  *= require_self
  */
- #navbares{
-   padding-bottom: 5%
- }
- #searchTreinadores{
-   width: 10cm
- }
- #navbarTexts{
-   text-emphasis-color: black;
- }
