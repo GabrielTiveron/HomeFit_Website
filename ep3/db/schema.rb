@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_172428) do
+ActiveRecord::Schema.define(version: 2018_12_01_163436) do
 
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,23 +20,52 @@ ActiveRecord::Schema.define(version: 2018_11_29_172428) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "condition"
+    t.float "weight"
+    t.float "height"
+    t.integer "age"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
-  create_table "exercises", force: :cascade do |t|
-    t.string "name"
+  create_table "clients_exercises", id: false, force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "exercise_id", null: false
     t.integer "duration"
-    t.boolean "state"
-    t.text "desc"
+    t.boolean "status"
+  end
+
+  create_table "clients_meals", id: false, force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "meal_id", null: false
+    t.string "day"
+  end
+
+  create_table "clients_trainers", id: false, force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "trainer_id", null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "desc_exercise"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "foods", force: :cascade do |t|
-    t.string "qt"
-    t.string "name"
-    t.string "meal"
+    t.string "desc_food"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "foods_meals", id: false, force: :cascade do |t|
+    t.integer "food_id", null: false
+    t.integer "meal_id", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.string "desc_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +78,10 @@ ActiveRecord::Schema.define(version: 2018_11_29_172428) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "formation"
+    t.string "name"
+    t.string "institution"
+    t.integer "age"
     t.index ["email"], name: "index_trainers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   end
