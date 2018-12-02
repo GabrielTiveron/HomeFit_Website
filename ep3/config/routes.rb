@@ -11,10 +11,14 @@ Rails.application.routes.draw do
   get 'trainers/client_food'
   get 'trainers/client_exercises'
   get 'home/index'
+<<<<<<< Updated upstream
 
   delete 'trainers/sign_out' => 'devise/sessions#destroy', as: :sign_out_my
 
 
+=======
+  
+>>>>>>> Stashed changes
   devise_for :clients
   # devise_scope :client do
   #   root to: 'devise/sessions#new'

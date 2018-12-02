@@ -1,3 +1,4 @@
-<div>
-  <li></li>
-</div>
+<h1>Seus clientes</h1>
+<% @clients.each do |client| %>
+  <h3><%= client.name %></h3>
+<% end %>
