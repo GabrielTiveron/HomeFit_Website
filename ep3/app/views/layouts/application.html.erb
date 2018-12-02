@@ -12,7 +12,6 @@
   </head>
 
   <body>
-<<<<<<< Updated upstream
     <% if current_trainer.nil? && current_client.nil? %>
     <% elsif current_client.nil? %>
       <div id="navbares">
@@ -67,7 +66,6 @@
         </div>
     <% end %>
 
-=======
 
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-#(name)") %>
@@ -125,9 +123,7 @@
           </nav>
         </div>
     <% end %>
- <%= link_to "logout", destroy_trainer_session_path, :method => :delete %>
     
->>>>>>> Stashed changes
     <div>
       <%= yield %>
     </div>

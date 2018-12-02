@@ -1,4 +1,24 @@
-<h1>Seus clientes</h1>
-<% @clients.each do |client| %>
-  <h3><%= client.name %></h3>
-<% end %>
+
+<div class="container">
+  <h2>Seus clientes</h2>
+  <div class="list-group">
+    <% @clients.each do |client| %>
+      <%= link_to "VAI", client %>
+      <a href="clients" class="list-group-item"><%= client.name %></a>
+    <% end %>
+  </div>
+</div>
+
+
+<div>
+  <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
+    <div class="navbar-collapse collapse justify-content-between">
+      <ul class="navbar-nav mr-auto">
+          <%= link_to "Sign out", destroy_trainer_session_path, :method => :delete %>
+      </ul>
+      <ul class="navbar-nav">
+        <a class="nav-link" href="/contact/index">Contato</a>
+      </ul>
+    </div>
+  </nav>
+</div>

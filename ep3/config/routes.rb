@@ -8,17 +8,12 @@ Rails.application.routes.draw do
   get 'trainers/registration'
   get 'trainers/index'
   get 'trainers/clients'
+  get 'trainers/clients/:id', to: "trainer#clients", as: :trainer
   get 'trainers/client_food'
   get 'trainers/client_exercises'
   get 'home/index'
-<<<<<<< Updated upstream
-
-  delete 'trainers/sign_out' => 'devise/sessions#destroy', as: :sign_out_my
-
-
-=======
+  # "SELECT duration, status FROM clients_exercises INNER JOIN cilents ON clients.id = clients_exercise.client_id"
   
->>>>>>> Stashed changes
   devise_for :clients
   # devise_scope :client do
   #   root to: 'devise/sessions#new'
