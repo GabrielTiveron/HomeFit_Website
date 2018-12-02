@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_163436) do
+ActiveRecord::Schema.define(version: 2018_12_02_153530) do
 
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,6 +68,28 @@ ActiveRecord::Schema.define(version: 2018_12_01_163436) do
     t.string "desc_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "day"
+    t.integer "client_id"
+    t.integer "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_menus_on_client_id"
+    t.index ["meal_id"], name: "index_menus_on_meal_id"
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.integer "duration"
+    t.boolean "status"
+    t.string "day"
+    t.integer "client_id"
+    t.integer "exercise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_routines_on_client_id"
+    t.index ["exercise_id"], name: "index_routines_on_exercise_id"
   end
 
   create_table "trainers", force: :cascade do |t|

@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
-  has_and_belongs_to_many :food
-  has_and_belongs_to_many :client
+  has_and_belongs_to_many :foods
+  has_many :meal, through: :menu
+
 end
