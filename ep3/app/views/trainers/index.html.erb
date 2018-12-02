@@ -3,8 +3,7 @@
   <h2>Seus clientes</h2>
   <div class="list-group">
     <% @clients.each do |client| %>
-      <%= link_to "VAI", client %>
-      <a href="clients" class="list-group-item"><%= client.name %></a>
+      <a href='clients/<%= client.id%>' class="list-group-item"><%= client.name %></a>
     <% end %>
   </div>
 </div>

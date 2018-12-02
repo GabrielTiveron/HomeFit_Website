@@ -19,8 +19,23 @@ class TrainersController < ApplicationController
     end
 
     def clients
+      @clients = Client.find(params[:id])
+    end
+
+    def client_exercises
+      @routines = Routine.joins(:client).where(clients:{id: params[:id]})
+      @clients = Client.find(params[:id])
+      @dia = params[:day]
+    end
+
+    def client_food
       
     end
-  
+
+    private 
+    def clients_params
+      params.require(:clients).permit(:name)
+    end
+
   end
   
