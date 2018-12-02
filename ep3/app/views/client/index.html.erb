@@ -23,7 +23,7 @@
 	                <td><input type="checkbox" class="checkthis" ></td>
 									<th scope="row"><%= e.day %></th>
 									<th scope="row"><%= e.exercise.desc_exercise %></th>
-									<th scope="row"><%= e.duration %></th>
+									<th scope="row"><%= e.duration %> min</th>
 	                </tr>
 									<% end %>
               </tbody>
@@ -31,6 +31,10 @@
         </div>
 	</div>
 </div>
+</div>
+
+<div id="btnRecord">
+	<button type="button" name="button">Gravar</button>
 </div>
 
 <div>

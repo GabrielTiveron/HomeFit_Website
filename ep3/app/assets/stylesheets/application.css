@@ -26,3 +26,8 @@
  #lineBreak{
    margin-top: 5%
  }
+
+ #btnRecord{
+   float: right;
+   margin-right: 10%
+ }
