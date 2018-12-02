@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'contact/index'
+  get 'client/index'
+  get 'client/food'
+  get 'client/list_trainers'
   get 'trainers/password'
   get 'trainers/registration'
   get 'trainers/index'
@@ -10,12 +14,12 @@ Rails.application.routes.draw do
 
   delete 'trainers/sign_out' => 'devise/sessions#destroy', as: :sign_out_my
 
-  
+
   devise_for :clients
   # devise_scope :client do
   #   root to: 'devise/sessions#new'
   # end
-  root to: "trainers#function"
+  root to: "librm#function"
 
   devise_for :trainers
   # devise_scope :trainer do

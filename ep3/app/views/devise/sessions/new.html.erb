@@ -21,9 +21,11 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
+  <% if request.original_url.eql? "http://localhost:3000/clients/sign_in" %>
   <div class="actions">
     <a href="/trainers/sign_in" class="button">Sou um Treinador</a>
   </div>
+  <% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>
