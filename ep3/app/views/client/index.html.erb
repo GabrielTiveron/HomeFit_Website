@@ -17,13 +17,16 @@
 
              </thead>
              <tbody>
-
-                <tr>
-                 <!-- Foreach database -->
-                <td><input type="checkbox" class="checkthis" /></td>
-                </tr>
+							 <% @client_routine.each do |e| %>
+	                <tr>
+	                 <!-- Foreach database - Exercises -->
+	                <td><input type="checkbox" class="checkthis" ></td>
+									<th scope="row"><%= e.day %></th>
+									<th scope="row"><%= e.exercise.desc_exercise %></th>
+									<th scope="row"><%= e.duration %></th>
+	                </tr>
+									<% end %>
               </tbody>
-
            </table>
         </div>
 	</div>
@@ -34,10 +37,10 @@
   <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
     <div class="navbar-collapse collapse justify-content-between">
       <ul class="navbar-nav mr-auto">
-          <%= link_to "Sign out", destroy_client_session_path, :method => :delete %>
+          <%= link_to "Sign out", destroy_client_session_path, :method => :delete, :style=>'color:#FFFFFF;' %>
       </ul>
       <ul class="navbar-nav">
-        <a class="nav-link" href="/contact/index">Contato</a>
+        <a class="nav-link" href="/contact/index" style="color:#FFFFFF">Contato</a>
       </ul>
     </div>
   </nav>
