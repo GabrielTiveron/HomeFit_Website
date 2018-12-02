@@ -1,0 +1,44 @@
+<h1>Bem-Vindo</h1>
+
+
+
+<div class="container" id = "lineBreak" >
+	<div class="row">
+    <div class="col-md-12">
+      <h4>Treinos do Dia</h4>
+        <div class="table-responsive">
+          <table id="mytable" class="table table-bordred table-striped">
+
+             <thead>
+             <th><input type="checkbox" id="checked" ></th>
+             <th>Dia da Semana</th>
+             <th>Treino</th>
+             <th>Duração</th>
+
+             </thead>
+             <tbody>
+
+                <tr>
+                 <!-- Foreach database -->
+                <td><input type="checkbox" class="checkthis" /></td>
+                </tr>
+              </tbody>
+
+           </table>
+        </div>
+	</div>
+</div>
+</div>
+
+<div>
+  <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
+    <div class="navbar-collapse collapse justify-content-between">
+      <ul class="navbar-nav mr-auto">
+          <%= link_to "Sign out", destroy_client_session_path, :method => :delete %>
+      </ul>
+      <ul class="navbar-nav">
+        <a class="nav-link" href="/contact/index">Contato</a>
+      </ul>
+    </div>
+  </nav>
+</div>
