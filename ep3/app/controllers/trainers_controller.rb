@@ -23,13 +23,16 @@ class TrainersController < ApplicationController
     end
 
     def client_exercises
-      @routines = Routine.joins(:client).where(clients:{id: params[:id]})
       @clients = Client.find(params[:id])
       @dia = params[:day]
+      @client_routine = Routine.joins(:client).where(clients:{email:@clients.email}).where(routines:{day:params[:day]})
     end
 
     def client_food
-      
+      @menu = Menu.joins(:client).where(clients:{id: params[:id]}).where(menus:{day: params[:day]})
+      @client = Client.find(params[:id])
+      @day = params[:day]
+
     end
 
     private 

@@ -1,1 +1,21 @@
 <h1>Treinos do <%= @clients.name %> no <%= @dia %></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Exercício</th>
+      <th scope="col">Duração</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @client_routine.each do |routine| %>
+    <tr>
+      <td><%= routine.status %></td>
+      <td><%= routine.exercise.desc_exercise %></td>
+      <td><%= routine.duration %></td>
+      <td> <a class="btn btn-outline-success" href="#" role="button">Editar</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

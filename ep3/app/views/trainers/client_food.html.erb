@@ -1,2 +1,25 @@
-<h1>Trainers#client_food</h1>
-<p>Find me in app/views/trainers/client_food.html.erb</p>
+<h1>Refeições do(a) <%= @client.name %></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Refeição</th>
+      <th scope="col">Comida</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @menu.each do |menu| %>
+    <% @food = menu.meal.foods %>
+      <% @food.each do |food| %>
+        <tr>
+          <td><%= menu.meal.desc_meal %></td>
+          <td><%= food.desc_food %></td>
+          <td> <a class="btn btn-outline-success" href="#" role="button">Editar</a></td>
+          <td> <a class="btn btn-outline-danger" href="#" role="button">Excluir</a></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
