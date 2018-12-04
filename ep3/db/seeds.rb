@@ -18,29 +18,49 @@ routines = Routine.create([{:day => 'Segunda-feira', :client_id => 1, :exercise_
                            {:day => 'Quarta-feira', :client_id => 1, :exercise_id => 2, :duration => 30},
                            {:day => 'Quinta-feira', :client_id => 1, :exercise_id => 3, :duration => 20}])
 
-foods = Food.create([{:desc_food => 'Frango'}, {:desc_food => 'Carne'},
-                     {:desc_food => 'Peixe'}, {:desc_food => 'Açai'},
-                     {:desc_food => 'Banana com aveia'}, {:desc_food => 'Fruta'}])
+foods_cafe = Food.create([{:desc_food => 'Frutas'}, {:desc_food => 'Vitamina'},
+                          {:desc_food => 'Pão integral'}, {:desc_food => 'Açai'},
+                          {:desc_food => 'Banana com aveia'}, {:desc_food => 'Fruta'},
+                          {:desc_food => 'Tapioca'}])
 
-meal1 = Meal.create(:desc_meal => 'Almoço')
-meal  = Meal.create(:desc_meal => 'Café da manhã')
-meal2 = Meal.create(:desc_meal => 'Janta')
-meal3 = Meal.create(:desc_meal => 'Café da Tarde')
-meal4 = Meal.create(:desc_meal => 'Lanche')
+foods_almoco = Food.create([{:desc_food => 'Frango'}, {:desc_food => 'Carne'},
+                            {:desc_food => 'Salada'}, {:desc_food => 'Churrasco'},
+                            {:desc_food => 'Peito de Peru'}, {:desc_food => 'Ovo'},
+                            {:desc_food => 'Peixe'}])
+
+foods_lanchet = Food.create([{:desc_food => 'Cereal'}, {:desc_food => 'Torrada com Geleia'},
+                     {:desc_food => 'Geleia'}, {:desc_food => 'Shake'},
+                     {:desc_food => 'Sanduíche Natural'}, {:desc_food => 'Vitamina'},
+                     {:desc_food => 'Salada'}])
+
+foods_janta = Food.create([{:desc_food => 'Cereal'}, {:desc_food => 'Torrada com Geleia'},
+                     {:desc_food => 'Geleia'}, {:desc_food => 'Shake'},
+                     {:desc_food => 'Sanduíche Natural'}, {:desc_food => 'Vitamina'},
+                     {:desc_food => 'Salada'}])
+
+meal1 = Meal.create(:desc_meal => 'Café da manhã')
+meal  = Meal.create(:desc_meal => 'Lanche da manha')
+meal2 = Meal.create(:desc_meal => 'Almoco')
+meal3 = Meal.create(:desc_meal => 'Lanche da tarde')
+meal4 = Meal.create(:desc_meal => 'Janta')
 meal5 = Meal.create(:desc_meal => 'Ceia')
 
-meal1.foods << foods
-meal.foods << foods
-meal2.foods << foods
-meal3.foods << foods
-meal4.foods << foods
-meal5.foods << foods
+meal1.foods << foods_cafe
+# meal.foods << foods_lanchem
+meal2.foods << foods_almoco
+meal3.foods << foods_lanchet
+meal4.foods << foods_janta
+# meal5.foods << foods_ceia
 
-menus = Menu.create([{:day => 'Segunda-feira', :client_id => 1, :meal_id => 2},
-                     {:day => 'Terça-feira', :client_id => 1, :meal_id => 1},
+menus = Menu.create([{:day => 'Segunda-feira', :client_id => 1, :meal_id => 1},
+                     {:day => 'Terça-feira', :client_id => 1, :meal_id => 2},
                      {:day => 'Quarta-feira', :client_id => 1, :meal_id => 3},
                      {:day => 'Quinta-feira', :client_id => 1, :meal_id => 4},
-                     {:day => 'Sexta-feira', :client_id => 1, :meal_id => 4},
-                     {:day => 'Sábado', :client_id => 1, :meal_id => 5},
-                     {:day => 'Domingo', :client_id => 1, :meal_id => 3},
-                     ])
+                     {:day => 'Sexta-feira', :client_id => 1, :meal_id => 5},
+                     {:day => 'Sábado', :client_id => 1, :meal_id => 6},
+                     {:day => 'Domingo', :client_id => 1, :meal_id => 6}])
+
+trainers = Trainer.create([{:name => 'Jean', :email => 'jean@email.com', :password => 'asdasd', :institution => 'Educação Fisica UnB'},
+                           {:name => 'Loiola', :email => 'loiola@email.com', :password => 'asdasd', :institution => 'Educação Fisica Faciplac'},
+                           {:name => 'Tiveron', :email => 'tiveron@email.com', :password => 'asdasd', :institution => 'Educação Fisica UniCEUB'},
+                           {:name => 'Levi', :email => 'levi@email.com', :password => 'asdasd', :institution => 'Educação Fisica UCB'}])

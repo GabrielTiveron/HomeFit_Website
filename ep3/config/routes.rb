@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   delete 'trainers/sign_out' => 'devise/sessions#destroy', as: :sign_out_my
 
 
-  devise_for :clients
-  # devise_scope :client do
-  #   root to: 'devise/sessions#new'
-  # end
+  devise_for :clients, :controller => {registration: 'create'}
   root to: "librm#function"
+
+  delete "client/update/", to: "client#exercise_update", as: :clients_update_exercise
+  get "client/trainer_search", to: "client#trainer_search", as: :list_trainer_session
+  get "client/trainer_profile", to: "client#trainer_profile", as: :trainer_profile_session
 
   devise_for :trainers
   # devise_scope :trainer do

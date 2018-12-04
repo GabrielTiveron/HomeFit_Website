@@ -1,0 +1,10 @@
+<% if @trainer.first.nil? %>
+<h1> Nenhum treinador correspondente </h1>
+<% else %>
+<div class="list-group">
+<% @trainer.each do |t| %>
+  <a href="<%= trainer_profile_session_path(:id => t.id) %>" class="list-group-item list-group-item-action"><%= t.name %> - <%= t.institution %></a>
+</div>
+
+<%end%>
+<% end %>

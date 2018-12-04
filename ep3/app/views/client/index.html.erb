@@ -1,4 +1,4 @@
-<h1>Bem-Vindo</h1>
+<h1>Bem-Vindo <%= current_client.name %> </h1>
 
 
 
@@ -10,7 +10,6 @@
           <table id="mytable" class="table table-bordred table-striped">
 
              <thead>
-             <th><input type="checkbox" id="checked" ></th>
              <th>Dia da Semana</th>
              <th>Treino</th>
              <th>Duração</th>
@@ -18,34 +17,19 @@
              </thead>
              <tbody>
 							 <% @client_routine.each do |e| %>
+							 <%if !e.status %>
 	                <tr>
 	                 <!-- Foreach database - Exercises -->
-	                <td><input type="checkbox" class="checkthis" ></td>
 									<th scope="row"><%= e.day %></th>
 									<th scope="row"><%= e.exercise.desc_exercise %></th>
 									<th scope="row"><%= e.duration %> min</th>
+									<th scope="row"><a class="btn btn-outline-success" href='<%=clients_update_exercise_path(:id => e.id)%>'data-method='delete' role="button">Feito</a></th>
 	                </tr>
+									<%end%>
 									<% end %>
               </tbody>
            </table>
         </div>
 	</div>
 </div>
-</div>
-
-<div id="btnRecord">
-	<button type="button" name="button">Gravar</button>
-</div>
-
-<div>
-  <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
-    <div class="navbar-collapse collapse justify-content-between">
-      <ul class="navbar-nav mr-auto">
-          <%= link_to "Sign out", destroy_client_session_path, :method => :delete, :style=>'color:#FFFFFF;' %>
-      </ul>
-      <ul class="navbar-nav">
-        <a class="nav-link" href="/contact/index" style="color:#FFFFFF">Contato</a>
-      </ul>
-    </div>
-  </nav>
 </div>

@@ -31,3 +31,11 @@
    float: right;
    margin-right: 10%
  }
+
+ #padBot{
+   padding-bottom: 5%
+ }
+
+ #padLeft{
+   padding-right: 5%
+ }
