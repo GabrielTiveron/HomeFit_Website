@@ -36,6 +36,7 @@
             </div>
         </nav>
       </div>
+      
     <% elsif current_trainer.nil? %>
       <div id="navbares">
           <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -65,6 +66,7 @@
               </div>
           </nav>
         </div>
+
     <% end %>
 
 
@@ -75,5 +77,20 @@
     <div>
       <%= yield %>
     </div>
+    <% if !current_trainer.nil? || !current_client.nil? %>
+
+      <div class="bottom_navbar">
+        <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
+          <div class="navbar-collapse collapse justify-content-between">
+            <ul class="navbar-nav mr-auto">
+              <a role="button" class="btn btn-dark" href='<%=destroy_trainer_session_path%>' data-method='delete'>Sign out</a>
+            </ul>
+            <ul class="navbar-nav">
+              <a class="nav-link" href="/contact/index">Contato</a>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    <% end %>
   </body>
 </html>

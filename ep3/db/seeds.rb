@@ -13,10 +13,11 @@ clients = Client.create([{:name => 'Gabriel', :email => 'gabriel@email.com', :pa
 
 exercises = Exercise.create([{:desc_exercise => 'Flexão'}, {:desc_exercise => 'Abdominal'}, {:desc_exercise => 'Agaixamento'}])
 
-routines = Routine.create([{:day => 'segunda', :client_id => 1, :exercise_id => 2, :duration => 30},
-    {:day => 'terca', :client_id => 1, :exercise_id => 1, :duration => 20},
-    {:day => 'quarta', :client_id => 1, :exercise_id => 2, :duration => 30},
-    {:day => 'quinta', :client_id => 1, :exercise_id => 3, :duration => 20}])
+routines = Routine.create([{:day => 'monday', :client_id => 1, :exercise_id => 2, :duration => 30},
+    {:day => 'tuesday', :client_id => 1, :exercise_id => 1, :duration => 20},
+    {:day => 'tuesday', :client_id => 1, :exercise_id => 2, :duration => 20},
+    {:day => 'wednesday', :client_id => 1, :exercise_id => 2, :duration => 30},
+    {:day => 'thursday', :client_id => 1, :exercise_id => 3, :duration => 20}])
 
 foods_cafe = Food.create([{:desc_food => 'Frutas'}, {:desc_food => 'Vitamina'},
    {:desc_food => 'Pão integral'}, {:desc_food => 'Açai'},
@@ -52,17 +53,32 @@ meal3.foods << foods_lanchet
 meal4.foods << foods_janta
 # meal5.foods << foods_ceia
 
-menus = Menu.create([{:day => 'Segunda-feira', :client_id => 1, :meal_id => 1},
-{:day => 'Terça-feira', :client_id => 1, :meal_id => 2},
-{:day => 'Quarta-feira', :client_id => 1, :meal_id => 3},
-{:day => 'Quinta-feira', :client_id => 1, :meal_id => 4},
-{:day => 'Sexta-feira', :client_id => 1, :meal_id => 5},
-{:day => 'Sábado', :client_id => 1, :meal_id => 6},
-{:day => 'Domingo', :client_id => 1, :meal_id => 6}])
+menus = Menu.create([{:day => 'monday', :client_id => 1, :meal_id => 1},
+{:day => 'monday', :client_id => 1, :meal_id => 2},
+{:day => 'monday', :client_id => 1, :meal_id => 3},
+{:day => 'monday', :client_id => 1, :meal_id => 4},
+{:day => 'monday', :client_id => 1, :meal_id => 5},
+{:day => 'monday', :client_id => 1, :meal_id => 6},
+{:day => 'monday', :client_id => 1, :meal_id => 6},
+{:day => 'tuesday', :client_id => 1, :meal_id => 1},
+{:day => 'tuesday', :client_id => 1, :meal_id => 2},
+{:day => 'tuesday', :client_id => 1, :meal_id => 3},
+{:day => 'tuesday', :client_id => 1, :meal_id => 4},
+{:day => 'tuesday', :client_id => 1, :meal_id => 5},
+{:day => 'tuesday', :client_id => 1, :meal_id => 6},
+{:day => 'tuesday', :client_id => 1, :meal_id => 6}])
 
 trainers = Trainer.create([{:name => 'Jean', :email => 'jean@email.com', :password => 'asdasd', :institution => 'Educação Fisica UnB'},
     {:name => 'Loiola', :email => 'loiola@email.com', :password => 'asdasd', :institution => 'Educação Fisica Faciplac'},
     {:name => 'Tiveron', :email => 'tiveron@email.com', :password => 'asdasd', :institution => 'Educação Fisica UniCEUB'},
     {:name => 'Levi', :email => 'levi@email.com', :password => 'asdasd', :institution => 'Educação Fisica UCB'}])
 
-    # clients.trainers << trainers
+client0 = Client.find(1)
+client1 = Client.find(3)
+client2 = Client.find(4)
+
+trainer = Trainer.find(4)
+
+trainer.client << client0
+trainer.client << client1
+trainer.client << client2

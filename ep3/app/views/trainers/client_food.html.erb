@@ -1,4 +1,4 @@
-<h1>Refeições do(a) <%= @client.name %></h1>
+<h1>Refeições do(a) <%= @client.name %> <%= @dia %></h1>
 <table class="table">
   <thead>
     <tr>
@@ -17,7 +17,7 @@
           <td><%= menu.meal.desc_meal %></td>
           <td><%= food.desc_food %></td>
           <td> <a class="btn btn-outline-success" href="#" role="button">Editar</a></td>
-          <td> <a class="btn btn-outline-danger" href="#" role="button">Excluir</a></td>
+          <td> <a class="btn btn-outline-danger" href='<%=trainer_delete_food_path(:menu_id => menu.id)%>' data-method='delete' role="button">Excluir</a></td>
         </tr>
       <% end %>
     <% end %>
