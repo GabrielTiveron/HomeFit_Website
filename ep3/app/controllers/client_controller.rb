@@ -1,8 +1,10 @@
 class ClientController < ApplicationController
 
   def index
-    if client_signed_in?
+    if client_signed_in? && !current_client.name.nil?
       @client_routine = Routine.joins(:client).where(clients:{id:current_client.id})
+    elsif client_signed_in? && current_client.name.nil?
+      redirect_to complete_session_path
     else
       redirect_to :root
     end
@@ -50,7 +52,7 @@ class ClientController < ApplicationController
   end
 
   def take_trainer
-    if client_signed_in
+    if client_signed_in?
       current_client.trainers << Trainer.find(params[:id])
       redirect_to client_index_path
     else

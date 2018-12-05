@@ -5,6 +5,12 @@ class TrainersController < ApplicationController
     trainer.sign_out
   end
   def index
+    if !current_trainer.nil? && !current_trainer.name.nil?
 
+  elsif current_trainer.name.nil?
+    redirect_to complete_session_path
+  else
+    redirect_to :root
+  end
   end
 end
