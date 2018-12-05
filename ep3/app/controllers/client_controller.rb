@@ -25,16 +25,37 @@ class ClientController < ApplicationController
   end
 
   def exercise_update
-    Routine.where(:id => params[:id]).update(:status => true)
-    redirect_to client_index_path
+    if client_signed_in?
+      Routine.where(:id => params[:id]).update(:status => true)
+      redirect_to client_index_path
+    else
+      redirect_to :root
+    end
   end
 
   def trainer_search
-    @trainer = Trainer.where(:name => params[:name_trainer])
+    if client_signed_in?
+      @trainer = Trainer.where(:name => params[:name_trainer])
+    else
+      redirect_to :root
+    end
   end
 
   def trainer_profile
-    @trainer = Trainer.find(params[:id])
+    if client_signed_in?
+      @trainer = Trainer.find(params[:id])
+    else
+      redirect_to :root
+    end
+  end
+
+  def take_trainer
+    if client_signed_in
+      current_client.trainers << Trainer.find(params[:id])
+      redirect_to client_index_path
+    else
+      redirect_to :root
+    end
   end
 
 end

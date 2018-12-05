@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete "client/update/", to: "client#exercise_update", as: :clients_update_exercise
   get "client/trainer_search", to: "client#trainer_search", as: :list_trainer_session
   get "client/trainer_profile", to: "client#trainer_profile", as: :trainer_profile_session
+  get "client/take_trainer", to: "client#take_trainer", as: :take_trainer_session
 
   devise_for :trainers
   # devise_scope :trainer do
