@@ -57,11 +57,22 @@
                     <a class="nav-link" href="/client/list_trainers">Treinador <span class="sr-only">(current)</span></a>
                   </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <input id="searchTreinadores" class="form-control mr-sm-2" type="text" placeholder="Procurar por treinadores" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+              <form class="form-inline my-2 my-lg-0" action="/client/trainer_search" accept-charset="UTF-8" method="get">
+                <input  class="form-control mr-sm-2" type="text" name="name_trainer" placeholder="Procurar Treinadores" id="name_trainer" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="commit" value="Search" data-disable-with="Search">Search</button>
+              </form>
               </div>
+          </nav>
+        </div>
+        <div>
+          <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
+            <div class="navbar-collapse collapse justify-content-between">
+              <ul class="navbar-nav mr-auto">
+                  <a class="btn btn-dark" href = '<%= destroy_client_session_path %>' data-method='delete' role='button'>Sign out</a></ul>
+              <ul class="navbar-nav">
+                <a class="nav-link" href="/contact/index" style="color:#FFFFFF">Contato</a>
+              </ul>
+            </div>
           </nav>
         </div>
     <% end %>

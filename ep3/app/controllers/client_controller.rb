@@ -1,12 +1,63 @@
 class ClientController < ApplicationController
+
   def index
-    @client_routine = Routine.joins(:client).where(clients:{email:'a@a.com'})
+    if client_signed_in? && !current_client.name.nil?
+      @client_routine = Routine.joins(:client).where(clients:{id:current_client.id})
+    elsif client_signed_in? && current_client.name.nil?
+      redirect_to complete_session_path
+    else
+      redirect_to :root
+    end
   end
 
   def food
+    if client_signed_in?
+      @client_menu = Menu.joins(:client).where(clients:{id:current_client.id})
+    else
+      redirect_to :root
+    end
   end
 
   def list_trainers
-    @trainers = Trainer.all
+    if client_signed_in?
+      @trainers = Trainer.all
+    else
+      redirect_to :root
+    end
   end
+
+  def exercise_update
+    if client_signed_in?
+      Routine.where(:id => params[:id]).update(:status => true)
+      redirect_to client_index_path
+    else
+      redirect_to :root
+    end
+  end
+
+  def trainer_search
+    if client_signed_in?
+      @trainer = Trainer.where(:name => params[:name_trainer])
+    else
+      redirect_to :root
+    end
+  end
+
+  def trainer_profile
+    if client_signed_in?
+      @trainer = Trainer.find(params[:id])
+    else
+      redirect_to :root
+    end
+  end
+
+  def take_trainer
+    if client_signed_in?
+      current_client.trainers << Trainer.find(params[:id])
+      redirect_to client_index_path
+    else
+      redirect_to :root
+    end
+  end
+
 end

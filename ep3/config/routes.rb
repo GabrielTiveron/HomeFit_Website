@@ -16,11 +16,15 @@ Rails.application.routes.draw do
 
 
   devise_for :clients
-  # devise_scope :client do
-  #   root to: 'devise/sessions#new'
-  # end
   root to: "librm#function"
 
+  delete "client/update/", to: "client#exercise_update", as: :clients_update_exercise
+  get "client/trainer_search", to: "client#trainer_search", as: :list_trainer_session
+  get "client/trainer_profile", to: "client#trainer_profile", as: :trainer_profile_session
+  get "client/take_trainer", to: "client#take_trainer", as: :take_trainer_session
+  get "client/complete_sign_up", to: "librm#complete_sign_up", as: :complete_session
+  get "client/update_sign_up_client", to: "librm#update_session_client", as: :update_client_session
+  get "client/update_sign_up_trainer", to: "librm#update_session_trainer", as: :update_trainer_session
   devise_for :trainers
   # devise_scope :trainer do
   # end

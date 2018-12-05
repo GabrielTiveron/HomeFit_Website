@@ -16,30 +16,14 @@
   </thead>
   <tbody>
    <!-- Foreach Database - Food -->
+   <% @client_menu.each do |m| %>
+   <tr>
+   <th scope="row"><%= m.meal.desc_meal %></th>
+   <% m.meal.foods.each do |f| %>
+   <th scope="row"><%= f.desc_food.nil? ? "–" : f.desc_food %> </th>
+   <%end%>
+ </tr>
+   <% end %>
   </tbody>
 </table>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div>
-  <nav class="navbar navbar-expand-md fixed-bottom navbar-dark bg-dark">
-    <div class="navbar-collapse collapse justify-content-between">
-      <ul class="navbar-nav mr-auto">
-          <%= link_to "Sign out", destroy_client_session_path, :method => :delete, :style=>'color:#FFFFFF;' %>
-      </ul>
-      <ul class="navbar-nav">
-        <a class="nav-link" href="/contact/index" style="color:#FFFFFF">Contato</a>
-      </ul>
-    </div>
-  </nav>
 </div>
