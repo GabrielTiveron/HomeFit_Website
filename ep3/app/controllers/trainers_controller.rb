@@ -1,5 +1,7 @@
 class TrainersController < ApplicationController
   before_action :set_day, only: [:client_exercises, :client_food, :edit_exercise]
+  skip_before_action :verify_authenticity_token, :only => [:edit_exercise_complete, :edit_food_complete]
+
 
     def function
       if current_trainer.nil? && current_client.nil?
@@ -33,7 +35,7 @@ class TrainersController < ApplicationController
     def client_food
       @menu = Menu.joins(:client).where(clients:{id: params[:id]}).where(menus:{day: params[:day]})
       @client = Client.find(params[:id])
-      
+      @day = params[:day]
     end
 
     def delete_exercise
@@ -56,6 +58,7 @@ class TrainersController < ApplicationController
         @exercise_name = params[:editName].capitalize
         @exercise = Exercise.where(desc_exercise: @exercise_name)
         if @exercise.nil?
+          
           @exercise.create
           @routine.update_attributes(:exercise_id => @exercise.id)
           @routine.update_attributes(:duration => params[:editTime])
@@ -67,6 +70,61 @@ class TrainersController < ApplicationController
 
     end
 
+    def edit_exercise_complete
+      @routine = Routine.joins(:client,:exercise).where(clients:{id: params[:id]}).where(exercises:{id: params[:exercise_id]}).where(routines:{day: params[:day]})
+      @day = params[:day]
+
+      redirect_to trainers_index_path
+
+      if params[:new_exercise] && params[:new_time]
+        @exercise_name = params[:new_exercise].capitalize
+        @exercise = Exercise.where(desc_exercise: @exercise_name)
+        if @exercise.first.nil?
+          @exercise.create 
+
+          @routine.update(:exercise_id => @exercise.first.id,:duration => params[:new_time])
+        else
+          @routine.update(:exercise_id => @exercise.first.id)
+          @routine.update(:duration => params[:new_time])
+        end
+      end
+
+    end
+    
+
+    def edit_food
+      @food = Food.find(params[:food_id])
+
+    end
+
+    def edit_food_complete
+      @menu = Menu.joins(:meal,:client).where(meals:{id: params[:meal_id]}).where(menus:{day: params[:day]}).where(clients:{id: params[:id]})
+      @day = params[:day]
+      @previous_meal = Meal.find(params[:meal_id])
+
+      redirect_to trainer_client_food_path(:id => params[:id],:day => params[:day])
+      
+      @meal = Meal.create
+      @meal.desc_meal = @previous_meal.desc_meal
+      @meal.save
+
+      if params[:new_food]
+        @food_name = params[:new_food].capitalize
+        @food = Food.where(desc_food: @food_name)
+        if @food.first.nil?
+          @food.create
+
+          @meal.foods << @food.first            
+
+          @menu.update_all(:meal_id => @meal.id)
+        else
+          @meal.food_ids = @food.first.id
+          @menu.update_all(:meal_id => @meal.id)
+        end
+      end
+
+    end
+    
     def delete_food
       @menu = Menu.find(params[:menu_id])
       @day = @menu.day
@@ -82,6 +140,9 @@ class TrainersController < ApplicationController
     private 
     def clients_params
       params.require(:clients).permit(:name)
+    end
+    def exercises_params
+      params.require(:exercises).permit(:desc_exercise,:id)
     end
 
     def set_day

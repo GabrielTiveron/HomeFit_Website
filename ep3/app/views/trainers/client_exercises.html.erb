@@ -12,7 +12,12 @@
   <tbody>
   <% @client_routine.each do |routine| %>
     <tr>
-      <td><%= routine.status %></td>
+      <% if routine.status %>
+        <% @status_exercicio = "Feito" %>
+      <% else %>
+        <% @status_exercicio = "Não feito" %>
+      <% end %>
+      <td><%= @status_exercicio %></td>
       <td><%= routine.exercise.desc_exercise %></td>
       <td><%= routine.duration %></td>
       <td> <a class="btn btn-outline-success" href="<%=trainer_edit_exercises_path(:id => @clients.id, day: @day, exercise_id: routine.exercise.id)%>" role="button">Editar</a></td>
