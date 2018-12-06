@@ -1,2 +1,34 @@
-<h1>Trainers#client_exercises</h1>
-<p>Find me in app/views/trainers/client_exercises.html.erb</p>
+<h1>Treinos do <%= @clients.name %> <%= @dia %></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Exercício</th>
+      <th scope="col">Duração</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @client_routine.each do |routine| %>
+    <tr>
+      <% if routine.status %>
+        <% @status_exercicio = "Feito" %>
+      <% else %>
+        <% @status_exercicio = "Não feito" %>
+      <% end %>
+      <td><%= @status_exercicio %></td>
+      <td><%= routine.exercise.desc_exercise %></td>
+      <td><%= routine.duration %></td>
+      <td> <a class="btn btn-outline-success" href="<%=trainer_edit_exercises_path(:id => @clients.id, day: @day, exercise_id: routine.exercise.id)%>" role="button">Editar</a></td>
+      <td> <a class="btn btn-outline-danger" href='<%=trainer_delete_exercise_path(:routine_id => routine.id)%>' data-method='delete' role="button">Excluir</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="botoes_editar_treinador">
+  <div>
+    <a class="btn btn-outline-success" href="<%=trainer_create_exercises_path(:id => @clients.id, day: @day)%>" role="button">Adcionar rotina de treinos do cliente</a>
+  </div>
+</div>

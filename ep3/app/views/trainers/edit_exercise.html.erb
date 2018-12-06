@@ -1,0 +1,8 @@
+<h1>Editar o exercício: <%= @routine.first.exercise.desc_exercise %> <%= @dia %></h1>
+
+
+<form  class="form-inline my-2 my-lg-0" action="/trainers/client_exercises/edit/<%= params[:id]%>/<%= params[:day]%>/<%=params[:exercise_id]%>/complete" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="UljyjV070EY1tP6enfkXJi+br4hbaqFKEi8Hi/Ops/y+nxGAtDhLNxr9GZHeBmU1K5C85/TLBpDygVZisEJ/qQ==" />
+  <input type="text" name="new_exercise" id="new_exercise" class="form-control mr-sm-2"  placeholder="Nome do exercício"/>
+  <input type="number" name="new_time" id="new_time" class="form-control mr-sm-2"  placeholder="Duração do exercício"/>
+  <input type="submit" name="commit" value="Search" data-disable-with="Editar" class="btn btn-outline-success my-2 my-sm-0" />
+</form>

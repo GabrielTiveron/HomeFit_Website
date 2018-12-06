@@ -13,8 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ h2.list_apresentation{
+   margin-top: 3%;
+   margin-bottom: 3%
+ }
+ div.bottom_navbar{
+   margin-top: 6%
+ }
+ div.botoes_editar_treinador{
+  margin-top: 3%;
+  margin-bottom: 3%;
+  justify-content: center;
+  display: flex;
+ }
  #navbares{
-   padding-bottom: 5%
+   padding-bottom: 2%
  }
  #searchTreinadores{
    width: 10cm

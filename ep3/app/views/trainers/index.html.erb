@@ -1,3 +1,11 @@
-<div>
-  <li></li>
+
+<div class="container">
+  <h2>Seus clientes</h2>
+  <div class="list-group">
+    <% @clients.each do |client| %>
+      <a href='clients/<%= client.id%>' class="list-group-item"><%= client.name %></a>
+    <% end %>
+  </div>
 </div>
+
+
