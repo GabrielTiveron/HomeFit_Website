@@ -137,6 +137,56 @@ class TrainersController < ApplicationController
       end
     end
 
+    def create_food
+      
+    end
+
+    def create_food_complete
+      if params[:new_meal] && params[:new_food]
+        @new_meal = params[:new_meal].capitalize
+        @new_food = params[:new_food].capitalize
+        @menu = Menu.new
+        @food = Food.where(desc_food: @new_food)
+        @meal = Meal.where(desc_meal: @new_meal)
+        if @meal.first.nil?
+          @meal.create
+        end
+        if @food.first.nil?
+          @food.create
+        end
+        @meal.first.foods << @food.first
+        @menu.day = params[:day]
+        @menu.client_id = params[:id]
+        @menu.meal_id = @meal.first.id
+        @menu.save
+      end
+      redirect_to trainer_client_food_path(id: params[:id], day: params[:day])
+    end
+
+    def create_exercise
+      
+    end
+
+    def create_exercise_complete
+
+      if params[:new_exercise] && params[:new_time]
+        @new_exercise = params[:new_exercise].capitalize
+        @new_time = params[:new_time].capitalize
+        @routine = Routine.new
+        @exercise = Exercise.where(desc_exercise: @new_exercise)
+        if @exercise.first.nil?
+          @exercise.create
+        end
+        @routine.duration = @new_time
+        @routine.day = params[:day]
+        @routine.exercise_id = @exercise.first.id
+        @routine.client_id = params[:id]
+        @routine.status = false
+        @routine.save
+      end
+      redirect_to trainer_client_exercises_path(day: params[:day], id: params[:id])
+    end
+
     private 
     def clients_params
       params.require(:clients).permit(:name)
