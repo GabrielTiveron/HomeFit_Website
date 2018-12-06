@@ -12,61 +12,11 @@
   </div>
 
   <div class="field">
-<<<<<<< HEAD
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-
-<%# Sign-up Treinadores %>
-
-<% else %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-=======
     <label for="client_password"class="sr-only">Password</label>
     <em class="mb-3 font-weight-normal">(6 characters minimum)</em>
     <input class="form-control"placeholder="Password"style="width: 200px"autocomplete="new-password" type="password" name="client[password]" id="client_password" />
     <label class="sr-only"for="client_password_confirmation">Password confirmation</label>
     <input class="form-control"placeholder="Confirm Password"style="width: 200px"autocomplete="new-password" type="password" name="client[password_confirmation]" id="client_password_confirmation" />
->>>>>>> bc5dcfb2749738069042e1223ce184f685ea1809
   </div>
 
   <div class="actions">

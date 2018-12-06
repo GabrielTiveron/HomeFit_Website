@@ -33,8 +33,6 @@ Rails.application.routes.draw do
 
   root to: "librm#function"
   
-
-
   delete "client/update/", to: "client#exercise_update", as: :clients_update_exercise
   get "client/trainer_search", to: "client#trainer_search", as: :list_trainer_session
   get "client/trainer_profile", to: "client#trainer_profile", as: :trainer_profile_session
