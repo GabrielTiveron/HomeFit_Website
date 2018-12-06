@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <h2>Sign up</h2>
 
 
@@ -64,3 +65,34 @@
 
 <%= render "devise/shared/links" %>
 <% end %>
+=======
+<div id="padRight">
+  <body class="text-center">
+<h2 class="h3 mb-3 font-weight-normal">Sign up</h2>
+
+
+<form class="new_client" id="new_client" action="/clients" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="S9U9u3AXUSSGngaTES3T/ilXfS88tam/aI7A8C/OBDY2uGlFmh2Q6CkIJ7kBUUAgfNByTZz21MMDaZRMwLlMNg==" />
+
+
+  <div class="field">
+    <label class="sr-only"for="client_email">Email</label><br />
+    <input class="form-control"autofocus="autofocus"style="width: 200px" autocomplete="email" type="email" value="" name="client[email]" placeholder="Email"id="client_email" />
+  </div>
+
+  <div class="field">
+    <label for="client_password"class="sr-only">Password</label>
+    <em class="mb-3 font-weight-normal">(6 characters minimum)</em>
+    <input class="form-control"placeholder="Password"style="width: 200px"autocomplete="new-password" type="password" name="client[password]" id="client_password" />
+    <label class="sr-only"for="client_password_confirmation">Password confirmation</label>
+    <input class="form-control"placeholder="Confirm Password"style="width: 200px"autocomplete="new-password" type="password" name="client[password_confirmation]" id="client_password_confirmation" />
+  </div>
+
+  <div class="actions">
+    <input  class="btn btn-lg btn-primary btn-block"type="submit"style="width: 200px" name="commit" value="Sign up" data-disable-with="Sign up" />
+  </div>
+</form>
+  <a href="/clients/sign_in">Log in</a><br />
+
+    </body>
+</div>
+>>>>>>> Stashed changes

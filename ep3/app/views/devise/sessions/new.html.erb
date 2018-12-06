@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -29,3 +30,45 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+=======
+<!doctype html>
+
+<html lang="en">
+<div  id="padRight">
+    <body class="text-center">
+      <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+    <form class="new_client" id="new_client" action="/clients/sign_in" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="oXblXqIJ/2x+zL5QZJyb4czfYa6WLmFiaa5jcbtPmSSFHUSRD6m1pw8hMNQNi3b2sWBeZb5T1WdbmX7LzwB8jg==" />
+
+        <label for="client_email" class="sr-only">Email</label>
+        <input class="form-control" style="width: 200px" required autofocus autocomplete="email" type="email" name="client[email]" id="client_email" placeholder="Email">
+        <label for="client_password" class="sr-only">Password</label>
+        <input class="form-control" style="width: 200px" autocomplete="current-password" type="password" name="client[password]" id="client_password" placeholder="Password" required>
+
+        <div class="checkboxmb-3">
+          <label>
+            <input type="checkbox" value="1" name="client[remember_me]" id="client_remember_me"> Remember me
+          </label>
+        </div>
+
+      <div class="actions">
+        <input class="btn btn-lg btn-primary btn-block"style="width: 200px"type="submit" name="commit" value="Log in" data-disable-with="Log in" />
+      </div>
+
+      <% if !request.original_url.eql? "http://localhost:3000/trainers/sign_in" %>
+      <div class="actions">
+        <a  href="/trainers/sign_in" class="button">Sou um Treinador</a>
+
+      </div>
+      <%end%>
+    </form>
+      <% if !request.original_url.eql? "http://localhost:3000/trainers/sign_in" %>
+        <a href="/clients/sign_up">Sign up</a><br />
+        <a href="/clients/password/new">Forgot your password?</a><br />
+      <% else %>
+        <a href="/trainers/sign_up">Sign up</a><br />
+        <a href="/trainers/password/new">Forgot your password?</a><br />
+        <%end%>
+    </body>
+    </div>
+</html>
+>>>>>>> Stashed changes
