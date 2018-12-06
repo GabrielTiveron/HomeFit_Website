@@ -1,0 +1,13 @@
+<h1>Este é <%= @trainer.name %>!</h1>
+
+<% if !current_client.trainers.first.nil? %>
+<% if current_client.trainers.first.id.eql? @trainer.id %>
+<h2>Seu treinador</h2>
+<% end %>
+<% end %>
+<h3> <%= @trainer.name %> tem <%= @trainer.age %> anos e é formado em <%= @trainer.institution %> </h3>
+
+
+<% if current_client.trainers.first.nil?  %>
+<a class="btn btn-success" href="<%= take_trainer_session_path(:id => @trainer.id) %>"  method='get' role='button'>Escolher treinador</a></ul>
+<%end%>

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_153530) do
     t.integer "client_id", null: false
     t.integer "exercise_id", null: false
     t.integer "duration"
-    t.boolean "status"
+    t.boolean "status", default: false
   end
 
   create_table "clients_meals", id: false, force: :cascade do |t|
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_153530) do
 
   create_table "routines", force: :cascade do |t|
     t.integer "duration"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.string "day"
     t.integer "client_id"
     t.integer "exercise_id"
