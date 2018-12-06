@@ -1,36 +1,24 @@
 class TrainersController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:edit_exercise_complete, :edit_food_complete, :create_exercise_complete, :create_food_complete]
   before_action :set_day, only: [:client_exercises, :client_food, :edit_exercise]
-  skip_before_action :verify_authenticity_token, :only => [:edit_exercise_complete, :edit_food_complete]
 
-
-    def function
-      if current_trainer.nil? && current_client.nil?
-        redirect_to new_client_session_path
-  
-      elsif current_client.nil?
-        redirect_to trainers_index_url
-      
-      elsif current_trainer.nil?
-        redirect_to trainers_index_url
-      end
-    end
-    
     def sign_out_trainer
       @trainer = Trainers.find(params[:id])
       trainer.sign_out
     end
 
     def index
-      if !current_trainer.nil? && !current_trainer.name.nil?
-  
-      elsif current_trainer.name.nil?
-        redirect_to complete_session_path
+      if !current_trainer.nil?
+          if current_trainer.name.nil?
+            redirect_to complete_session_path
+          end
+          @clients = Client.find_by_sql("SELECT * FROM clients
+            INNER JOIN clients_trainers ON clients_trainers.client_id = clients.id
+            WHERE clients_trainers.trainer_id = #{current_trainer.id}")
       else
         redirect_to :root
       end
-      @clients = Client.find_by_sql("SELECT * FROM clients
-        INNER JOIN clients_trainers ON clients_trainers.client_id = clients.id
-        WHERE clients_trainers.trainer_id = #{current_trainer.id}")
+
     end
 
     def clients
