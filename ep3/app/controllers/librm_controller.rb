@@ -8,7 +8,7 @@ class LibrmController < ApplicationController
       redirect_to trainers_index_url
 
     elsif current_trainer.nil?
-      redirect_to client_index_url
+      redirect_to client_index_path
     end
   end
 
