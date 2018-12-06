@@ -21,11 +21,12 @@ class LibrmController < ApplicationController
   end
 
   def complete_sign_up_trainer
+
   end
 
   def update_session_trainer
     current_trainer.update(:name => params[:name], :age => params[:age], :formation => params[:formation], :institution => params[:institution])
-    redirect_to 'trainers/index'
+    redirect_to :root
   end
 
 end
