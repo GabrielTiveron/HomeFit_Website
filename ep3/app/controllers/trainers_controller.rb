@@ -42,7 +42,7 @@ class TrainersController < ApplicationController
       @routine = Routine.find(params[:routine_id])
       @day = @routine.day
       if @routine.nil?
-        
+
       else
         redirect_to trainer_client_exercises_path(id: @routine.client_id, :day => @day)
 
@@ -53,12 +53,12 @@ class TrainersController < ApplicationController
     def edit_exercise
       @routine = Routine.joins(:client,:exercise).where(clients:{id: params[:id]}).where(exercises:{id: params[:exercise_id]}).where(routines:{day: params[:day]})
       @day = params[:day]
-      
+
       if params[:editName] && params[:editTime]
         @exercise_name = params[:editName].capitalize
         @exercise = Exercise.where(desc_exercise: @exercise_name)
         if @exercise.nil?
-          
+
           @exercise.create
           @routine.update_attributes(:exercise_id => @exercise.id)
           @routine.update_attributes(:duration => params[:editTime])
@@ -80,7 +80,7 @@ class TrainersController < ApplicationController
         @exercise_name = params[:new_exercise].capitalize
         @exercise = Exercise.where(desc_exercise: @exercise_name)
         if @exercise.first.nil?
-          @exercise.create 
+          @exercise.create
 
           @routine.update(:exercise_id => @exercise.first.id,:duration => params[:new_time])
         else
@@ -90,7 +90,7 @@ class TrainersController < ApplicationController
       end
 
     end
-    
+
 
     def edit_food
       @food = Food.find(params[:food_id])
@@ -103,7 +103,7 @@ class TrainersController < ApplicationController
       @previous_meal = Meal.find(params[:meal_id])
 
       redirect_to trainer_client_food_path(:id => params[:id],:day => params[:day])
-      
+
       @meal = Meal.create
       @meal.desc_meal = @previous_meal.desc_meal
       @meal.save
@@ -114,7 +114,7 @@ class TrainersController < ApplicationController
         if @food.first.nil?
           @food.create
 
-          @meal.foods << @food.first            
+          @meal.foods << @food.first
 
           @menu.update_all(:meal_id => @meal.id)
         else
@@ -124,12 +124,12 @@ class TrainersController < ApplicationController
       end
 
     end
-    
+
     def delete_food
       @menu = Menu.find(params[:menu_id])
       @day = @menu.day
       if @menu.nil?
-        
+
       else
         redirect_to trainer_client_food_path(id: @menu.client_id, :day => @day)
 
@@ -138,7 +138,7 @@ class TrainersController < ApplicationController
     end
 
     def create_food
-      
+
     end
 
     def create_food_complete
@@ -147,24 +147,25 @@ class TrainersController < ApplicationController
         @new_food = params[:new_food].capitalize
         @menu = Menu.new
         @food = Food.where(desc_food: @new_food)
-        @meal = Meal.where(desc_meal: @new_meal)
-        if @meal.first.nil?
-          @meal.create
-        end
+
+        @meal = Meal.create
+        @meal.desc_meal = @new_meal
+        @meal.save
+
         if @food.first.nil?
           @food.create
         end
-        @meal.first.foods << @food.first
+        @meal.foods << @food.first
         @menu.day = params[:day]
         @menu.client_id = params[:id]
-        @menu.meal_id = @meal.first.id
+        @menu.meal_id = @meal.id
         @menu.save
       end
       redirect_to trainer_client_food_path(id: params[:id], day: params[:day])
     end
 
     def create_exercise
-      
+
     end
 
     def create_exercise_complete
@@ -187,7 +188,7 @@ class TrainersController < ApplicationController
       redirect_to trainer_client_exercises_path(day: params[:day], id: params[:id])
     end
 
-    private 
+    private
     def clients_params
       params.require(:clients).permit(:name)
     end
@@ -217,4 +218,4 @@ class TrainersController < ApplicationController
 
     end
 
-end  
+end
