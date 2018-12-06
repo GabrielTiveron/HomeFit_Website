@@ -5,7 +5,7 @@
 <h2>Seu treinador</h2>
 <% end %>
 <% end %>
-<h3> <%= @trainer.name %> tem <%= @trainer.age %> anos, tem grau de formação <%= @trainer.formation %> <%= "e é formado(a) na #{@trainer.institution}" %> </h3>
+<h3> <%= @trainer.name %> tem <%= @trainer.age %> anos, tem grau de formação <%= @trainer.formation %> <%= "e é formado(a) em #{@trainer.institution}" %> </h3>
 
 
 <% if current_client.trainers.first.nil?  %>

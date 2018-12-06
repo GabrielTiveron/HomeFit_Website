@@ -20,8 +20,13 @@ routines = Routine.create([{:day => 'monday', :client_id => 1, :exercise_id => 2
     {:day => 'thursday', :client_id => 1, :exercise_id => 3, :duration => 20}])
 
 foods_cafe = Food.create([{:desc_food => 'Frutas'}, {:desc_food => 'Vitamina'},
-   {:desc_food => 'Pão integral'}, {:desc_food => 'Açai'},
+   {:desc_food => 'Pão integral'}, {:desc_food => 'limonada'},
    {:desc_food => 'Banana com aveia'}, {:desc_food => 'Fruta'},
+   {:desc_food => 'Tapioca'}])
+
+foods_lanchem = Food.create([{:desc_food => 'Danone'}, {:desc_food => 'Vitamina'},
+   {:desc_food => 'Sanduíche Natural'}, {:desc_food => 'Açai'},
+   {:desc_food => 'Banana com aveia'}, {:desc_food => 'Maçã'},
    {:desc_food => 'Tapioca'}])
 
 foods_almoco = Food.create([{:desc_food => 'Frango'}, {:desc_food => 'Carne'},
@@ -34,8 +39,13 @@ foods_lanchet = Food.create([{:desc_food => 'Cereal'}, {:desc_food => 'Torrada c
 {:desc_food => 'Sanduíche Natural'}, {:desc_food => 'Vitamina'},
 {:desc_food => 'Salada'}])
 
-foods_janta = Food.create([{:desc_food => 'Cereal'}, {:desc_food => 'Torrada com Geleia'},
-{:desc_food => 'Geleia'}, {:desc_food => 'Shake'},
+foods_janta = Food.create([{:desc_food => 'Frango'}, {:desc_food => 'Porco'},
+{:desc_food => 'Carne'}, {:desc_food => 'Peixe'},
+{:desc_food => 'Salada com Frango'}, {:desc_food => 'Pernil'},
+{:desc_food => ''}])
+
+foods_ceia = Food.create([{:desc_food => 'Cereal'}, {:desc_food => 'Sanduíche Natural'},
+{:desc_food => 'Salada'}, {:desc_food => 'Leite'},
 {:desc_food => 'Sanduíche Natural'}, {:desc_food => 'Vitamina'},
 {:desc_food => 'Salada'}])
 
@@ -47,31 +57,23 @@ meal4 = Meal.create(:desc_meal => 'Janta')
 meal5 = Meal.create(:desc_meal => 'Ceia')
 
 meal1.foods << foods_cafe
-# meal.foods << foods_lanchem
+meal.foods << foods_lanchem
 meal2.foods << foods_almoco
 meal3.foods << foods_lanchet
 meal4.foods << foods_janta
-# meal5.foods << foods_ceia
+meal5.foods << foods_ceia
 
 menus = Menu.create([{:day => 'monday', :client_id => 1, :meal_id => 1},
 {:day => 'monday', :client_id => 1, :meal_id => 2},
 {:day => 'monday', :client_id => 1, :meal_id => 3},
 {:day => 'monday', :client_id => 1, :meal_id => 4},
 {:day => 'monday', :client_id => 1, :meal_id => 5},
-{:day => 'monday', :client_id => 1, :meal_id => 6},
-{:day => 'monday', :client_id => 1, :meal_id => 6},
-{:day => 'tuesday', :client_id => 1, :meal_id => 1},
-{:day => 'tuesday', :client_id => 1, :meal_id => 2},
-{:day => 'tuesday', :client_id => 1, :meal_id => 3},
-{:day => 'tuesday', :client_id => 1, :meal_id => 4},
-{:day => 'tuesday', :client_id => 1, :meal_id => 5},
-{:day => 'tuesday', :client_id => 1, :meal_id => 6},
-{:day => 'tuesday', :client_id => 1, :meal_id => 6}])
+{:day => 'monday', :client_id => 1, :meal_id => 6}])
 
-trainers = Trainer.create([{:name => 'Jean', :email => 'jean@email.com', :password => 'asdasd', :institution => 'Educação Fisica UnB'},
-    {:name => 'Loiola', :email => 'loiola@email.com', :password => 'asdasd', :institution => 'Educação Fisica Faciplac'},
-    {:name => 'Tiveron', :email => 'tiveron@email.com', :password => 'asdasd', :institution => 'Educação Fisica UniCEUB'},
-    {:name => 'Levi', :email => 'levi@email.com', :password => 'asdasd', :institution => 'Educação Fisica UCB'}])
+trainers = Trainer.create([{:name => 'Jean', :email => 'jean@email.com', :password => 'asdasd', :institution => 'Educação Fisica - UnB', :age => 23, :formation => "Ensino Superior completo"},
+    {:name => 'Loiola', :email => 'loiola@email.com', :password => 'asdasd', :institution => 'Educação Fisica - Faciplac',:age => 25, :formation => "Ensino Superior completo"},
+    {:name => 'Tiveron', :email => 'tiveron@email.com', :password => 'asdasd', :institution => 'Educação Fisica - UniCEUB',:age => 24, :formation => "Ensino Superior completo"},
+    {:name => 'Levi', :email => 'levi@email.com', :password => 'asdasd', :institution => 'Educação Fisica - UCB',:age => 35, :formation => "Ensino Superior completo"}])
 
 client0 = Client.find(1)
 client1 = Client.find(3)
