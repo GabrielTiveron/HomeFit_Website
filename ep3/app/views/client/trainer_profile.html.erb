@@ -8,7 +8,6 @@
 <h3> <%= @trainer.name %> tem <%= @trainer.age %> anos, tem grau de formação <%= @trainer.formation %> <%= "e é formado(a) na #{@trainer.institution}" %> </h3>
 
 
-
 <% if current_client.trainers.first.nil?  %>
 <a class="btn btn-success" href="<%= take_trainer_session_path(:id => @trainer.id) %>"  method='get' role='button'>Escolher treinador</a></ul>
 <%end%>
