@@ -52,3 +52,11 @@
  #padLeft{
    padding-right: 5%
  }
+ #padRight{
+   padding-top: 10%;
+   margin: 0 auto;
+   display: table;
+ }
+ #padCenter{
+   align-content: center;
+ }
