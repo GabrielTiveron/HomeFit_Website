@@ -14,8 +14,20 @@ class TrainersController < ApplicationController
         redirect_to trainers_index_url
       end
     end
+    
+    def sign_out_trainer
+      @trainer = Trainers.find(params[:id])
+      trainer.sign_out
+    end
 
     def index
+      if !current_trainer.nil? && !current_trainer.name.nil?
+  
+      elsif current_trainer.name.nil?
+        redirect_to complete_session_path
+      else
+        redirect_to :root
+      end
       @clients = Client.find_by_sql("SELECT * FROM clients
         INNER JOIN clients_trainers ON clients_trainers.client_id = clients.id
         WHERE clients_trainers.trainer_id = #{current_trainer.id}")
@@ -216,17 +228,5 @@ class TrainersController < ApplicationController
       end
 
     end
-  def sign_out_trainer
-    @trainer = Trainers.find(params[:id])
-    trainer.sign_out
-  end
-  def index
-    if !current_trainer.nil? && !current_trainer.name.nil?
 
-  elsif current_trainer.name.nil?
-    redirect_to complete_session_path
-  else
-    redirect_to :root
-  end
-  end
-  
+end  
